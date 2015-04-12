@@ -5,7 +5,10 @@ def chat(inp):
         result += "Because "
 
     if inp.endswith("?"):
-        result += "Waffles!"
+        if "what is" in inp.lower():
+            result += "It's all part of the mystery..."
+        else:
+            result += "Waffles!"
     elif inp.endswith("!"):
         result += "YAHHHHHHHHHHHH! Backatcha ;)"
     else:
