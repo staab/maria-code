@@ -13,7 +13,13 @@ def answer_question(inp):
 
 
 def answer_exclamation(inp):
-    return "YAHHHHHHHHHHHH! Backatcha ;)"
+
+    if "this is" in inp or "you are" in inp or "you're" in inp:
+        result = "YAHHHHHHHHHHHH! Backatcha ;)"
+    else:
+        result = "Yeah, things are totally sweet."
+
+    return result
 
 
 def normalize(inp):
