@@ -1,7 +1,14 @@
 import chatterbot
+import random
 
 print "Say something to our chatterbot!"
 
+bots = [
+    chatterbot.Bot("Etta"),
+    chatterbot.Bot("Gertrude"),
+    chatterbot.Bot("Brunhilde")
+]
+
 while True:
     inp = raw_input()
-    print chatterbot.chat(inp)
+    print random.choice(bots).chat(inp)

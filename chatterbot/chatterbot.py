@@ -1,39 +1,42 @@
-def answer_question(inp):
-    result = ""
+class Bot(object):
+    def __init__(self, name):
+        self.name = name
 
-    if "why" in inp:
-        result += "Because "
+    def _answer_question(self, inp):
+        result = ""
 
-    if "what is" in inp:
-        result += "it's all part of the mystery..."
-    else:
-        result += "waffles!"
+        if "why" in inp:
+            result += "Because "
 
-    return result
+        if "what is" in inp:
+            result += "it's all part of the mystery..."
+        else:
+            result += "waffles!"
 
+        return result
 
-def answer_exclamation(inp):
+    def _answer_exclamation(self, inp):
 
-    if "this is" in inp or "you are" in inp or "you're" in inp:
-        result = "YAHHHHHHHHHHHH! Backatcha ;)"
-    else:
-        result = "Yeah, things are totally sweet."
+        if "this is" in inp or "you are" in inp or "you're" in inp:
+            result = "YAHHHHHHHHHHHH! Backatcha ;)"
+        else:
+            result = "Yeah, things are totally sweet."
 
-    return result
+        return result
 
+    def _normalize(self, inp):
+        return inp.lower().strip()
 
-def normalize(inp):
-    return inp.lower().strip()
+    def chat(self, inp):
+        inp = self._normalize(inp)
 
+        if inp.endswith("?"):
+            result = self._answer_question(inp)
+        elif inp.endswith("!"):
+            result = self._answer_exclamation(inp)
+        else:
+            result = "You're a dope."
 
-def chat(inp):
-    inp = normalize(inp)
+        result = '%s says, "%s"' % (self.name, result)
 
-    if inp.endswith("?"):
-        result = answer_question(inp)
-    elif inp.endswith("!"):
-        result = answer_exclamation(inp)
-    else:
-        result = "You're a dope."
-
-    return result
+        return result
