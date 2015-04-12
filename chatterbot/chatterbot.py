@@ -1,17 +1,33 @@
-def chat(inp):
+def answer_question(inp):
     result = ""
 
-    if "why" in inp.lower():
+    if "why" in inp:
         result += "Because "
 
-    if inp.endswith("?"):
-        if "what is" in inp.lower():
-            result += "It's all part of the mystery..."
-        else:
-            result += "Waffles!"
-    elif inp.endswith("!"):
-        result += "YAHHHHHHHHHHHH! Backatcha ;)"
+    if "what is" in inp:
+        result += "it's all part of the mystery..."
     else:
-        result += "You're a dope."
+        result += "waffles!"
+
+    return result
+
+
+def answer_exclamation(inp):
+    return "YAHHHHHHHHHHHH! Backatcha ;)"
+
+
+def normalize(inp):
+    return inp.lower().strip()
+
+
+def chat(inp):
+    inp = normalize(inp)
+
+    if inp.endswith("?"):
+        result = answer_question(inp)
+    elif inp.endswith("!"):
+        result = answer_exclamation(inp)
+    else:
+        result = "You're a dope."
 
     return result
