@@ -1,3 +1,4 @@
+import chatterbot_func
 import chatterbot
 import random
 
@@ -7,8 +8,7 @@ print "Say something to our chatterbot!"
 
 bots = [
     chatterbot.Bot("Etta"),
-    chatterbot.Bot("Gertrude"),
-    chatterbot.Bot("Brunhilde")
+    chatterbot_func.create_bot("Gertrude"),
 ]
 
 keeper = TimeKeeper()
@@ -16,5 +16,5 @@ keeper.start()
 
 while True:
     inp = raw_input()
-    print random.choice(bots).chat(inp)
+    print chatterbot_func.chat_loud(random.choice(bots), inp)
     print "Time elapsed: %d seconds" % int(keeper.elapsed())
